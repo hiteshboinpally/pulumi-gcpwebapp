@@ -1,30 +1,78 @@
 {
-    "name": "xyz",
+    "name": "gcpwebapp",
     "resources": {
-        "xyz:index:StaticPage": {
+        "gcpwebapp:index:AppEngineWebApp": {
             "isComponent": true,
             "inputProperties": {
-                "indexContent": {
+                "frontendDirectory": {
                     "type": "string",
-                    "description": "The HTML content for index.html."
+                    "description": "The directory containing frontend files."
+                },
+                "backendDirectory": {
+                    "type": "string",
+                    "description": "The directory containing backend files."
+                },
+                "websiteIndexPage": {
+                    "type": "string",
+                    "description": "The file that represents the start page of your site (e.g. index.html)."
+                },
+                "websiteErrorPage": {
+                    "type": "string",
+                    "description": "The file that represents the error page of your site."
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ID of the project in which the resources should be constructed."
+                },
+                "regionId": {
+                    "type": "string",
+                    "description": "The ID of the region you're deploying into. Required to fill in the URL of the server (e.g. uc for us-central)."
+                },
+                "bucketAdminMembers": {
+                    "type": "string[]",
+                    "description": "Members that you want to give admin privileges to, expected to be in Google's supported formats."
+                },
+                "appEngineRuntime": {
+                    "type": "string",
+                    "description": "Desired runtime (e.g. nodejs14)."
+                },
+                "appEngineEntrypoint": {
+                    "$ref": "/gcp/v5.0.0/schema.json#/types/gcp:appengine%2FStandardAppVersionEntrypoint:StandardAppVersionEntrypoint",
+                    "description": "The entrypoint for the application."
                 }
             },
             "requiredInputs": [
-                "indexContent"
+                "frontendDirectory",
+                "backendDirectory",
+                "websiteIndexPage",
+                "websiteErrorPage",
+                "project",
+                "regionId",
+                "appEngineRuntime"
             ],
             "properties": {
-                "bucket": {
-                    "$ref": "/aws/v4.0.0/schema.json#/resources/aws:s3%2Fbucket:Bucket",
-                    "description": "The bucket resource."
-                },
                 "websiteUrl": {
                     "type": "string",
                     "description": "The website URL."
+                },
+                "serverUrl": {
+                    "type": "string",
+                    "description": "The server/API URL."
+                },
+                "bucket": {
+                    "$ref": "/google-native/v0.2.0/schema.json#/resources/google-native:storage%2Fv1:Bucket",
+                    "description": "The bucket resource where the files have been uploaded."
+                },
+                "appEngineServer": {
+                    "$ref": "/gcp/v5.0.0/schema.json#/resources/gcp:appengine%2FstandardAppVersion:StandardAppVersion",
+                    "description": "The app engine that has been built."
                 }
             },
             "required": [
+                "websiteUrl",
+                "serverUrl",
                 "bucket",
-                "websiteUrl"
+                "appEngineServer"
             ]
         }
     },
@@ -32,16 +80,18 @@
         "csharp": {
             "packageReferences": {
                 "Pulumi": "3.*",
-                "Pulumi.Aws": "4.*"
+                "Pulumi.Gcp": "5.*",
+                "Pulumi.GoogleNative": "0.2.0"
             }
         },
         "go": {
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-xyz/sdk/go/xyz"
+            "importBasePath": "github.com/pulumi/pulumi-gcpwebapp/sdk/go/gcpwebapp"
         },
         "nodejs": {
             "dependencies": {
-                "@pulumi/aws": "^4.0.0"
+                "@pulumi/gcp": "^5.6.0",
+                "@pulumi/google-native": "^0.2.0"
             },
             "devDependencies": {
                 "typescript": "^3.7.0"
@@ -50,7 +100,8 @@
         "python": {
             "requires": {
                 "pulumi": ">=3.0.0,<4.0.0",
-                "pulumi-aws": ">=4.0.0,<5.0.0"
+                "pulumi-gcp": ">=5.0.0,<6.0.0",
+                "pulumi-google-native": "==0.2.0"
             }
         }
     }
