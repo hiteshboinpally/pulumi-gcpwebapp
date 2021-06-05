@@ -29,7 +29,10 @@
                     "description": "The ID of the region you're deploying into. Required to fill in the URL of the server (e.g. uc for us-central)."
                 },
                 "bucketAdminMembers": {
-                    "type": "string[]",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Members that you want to give admin privileges to, expected to be in Google's supported formats."
                 },
                 "appEngineRuntime": {
@@ -59,10 +62,6 @@
                     "type": "string",
                     "description": "The server/API URL."
                 },
-                "bucket": {
-                    "$ref": "/google-native/v0.2.0/schema.json#/resources/google-native:storage%2Fv1:Bucket",
-                    "description": "The bucket resource where the files have been uploaded."
-                },
                 "appEngineServer": {
                     "$ref": "/gcp/v5.0.0/schema.json#/resources/gcp:appengine%2FstandardAppVersion:StandardAppVersion",
                     "description": "The app engine that has been built."
@@ -71,7 +70,6 @@
             "required": [
                 "websiteUrl",
                 "serverUrl",
-                "bucket",
                 "appEngineServer"
             ]
         }
@@ -101,7 +99,7 @@
             "requires": {
                 "pulumi": ">=3.0.0,<4.0.0",
                 "pulumi-gcp": ">=5.0.0,<6.0.0",
-                "pulumi-google-native": "==0.2.0"
+                "pulumi-google-native": ">=0.2.0, <1.0.0"
             }
         }
     }

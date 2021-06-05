@@ -418,6 +418,8 @@ github.com/pulumi/pulumi/pkg/v3 v3.0.1-0.20210419234039-6a33b4b7ee41 h1:BMAQqKLn
 github.com/pulumi/pulumi/pkg/v3 v3.0.1-0.20210419234039-6a33b4b7ee41/go.mod h1:XsgC0PpPdjzZAj9YyEMvtU0ei542zOGxS7M1EzFmH84=
 github.com/pulumi/pulumi/sdk/v3 v3.0.0 h1:zkragE05t1Rco/ymfqMU4UXdEmKMmOH0SXhUKQxujxQ=
 github.com/pulumi/pulumi/sdk/v3 v3.0.0/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
+github.com/pulumi/pulumi/sdk/v3 v3.3.1 h1:E64NheQ5X2fz3DcQsZ7lDV7js51GNFPnXiXWfPCACnE=
+github.com/pulumi/pulumi/sdk/v3 v3.3.1/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=

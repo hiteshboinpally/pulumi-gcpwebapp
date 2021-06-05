@@ -1,11 +1,12 @@
 {
-    "name": "@pulumi/xyz",
+    "name": "@pulumi/gcpwebapp",
     "version": "${VERSION}",
     "scripts": {
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/aws": "^4.0.0"
+        "@pulumi/gcp": "^5.6.0",
+        "@pulumi/google-native": "^0.2.0"
     },
     "devDependencies": {
         "typescript": "^3.7.0"
