@@ -37,11 +37,16 @@ $ export PATH=$PATH:$PWD/bin
 
 # Test Node.js SDK
 $ make install_nodejs_sdk
-$ cd examples/simple
+$ cd examples/simple-node
 $ yarn install
-$ yarn link @pulumi/xyz
+$ yarn link @pulumi/gcpwebapp
 $ pulumi stack init test
-$ pulumi config set aws:region us-east-1
+$ pulumi config set project <insert your GCP project name>
+$ pulumi config set regionId <insert your region's id>
+$ pulumi config set gcpUserEmail <insert the email you're deploying from>
+$ pulumi up
+$ bash update-url.sh
+# We're forced to run pulumi up twice since the URLs must be updated based on the stack output
 $ pulumi up
 ```
 
