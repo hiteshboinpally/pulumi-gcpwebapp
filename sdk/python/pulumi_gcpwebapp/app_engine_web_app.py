@@ -21,7 +21,7 @@ class AppEngineWebAppArgs:
                  region_id: pulumi.Input[str],
                  website_error_page: pulumi.Input[str],
                  website_index_page: pulumi.Input[str],
-                 app_engine_entrypoint: Optional[pulumi.Input['pulumi_gcp.appengine.StandardAppVersionEntrypointArgs']] = None,
+                 app_engine_entrypoint: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bucket_admin_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AppEngineWebApp resource.
@@ -32,7 +32,6 @@ class AppEngineWebAppArgs:
         :param pulumi.Input[str] region_id: The ID of the region you're deploying into. Required to fill in the URL of the server (e.g. uc for us-central).
         :param pulumi.Input[str] website_error_page: The file that represents the error page of your site.
         :param pulumi.Input[str] website_index_page: The file that represents the start page of your site (e.g. index.html).
-        :param pulumi.Input['pulumi_gcp.appengine.StandardAppVersionEntrypointArgs'] app_engine_entrypoint: The entrypoint for the application.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] bucket_admin_members: Members that you want to give admin privileges to, expected to be in Google's supported formats.
         """
         pulumi.set(__self__, "app_engine_runtime", app_engine_runtime)
@@ -133,14 +132,11 @@ class AppEngineWebAppArgs:
 
     @property
     @pulumi.getter(name="appEngineEntrypoint")
-    def app_engine_entrypoint(self) -> Optional[pulumi.Input['pulumi_gcp.appengine.StandardAppVersionEntrypointArgs']]:
-        """
-        The entrypoint for the application.
-        """
+    def app_engine_entrypoint(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "app_engine_entrypoint")
 
     @app_engine_entrypoint.setter
-    def app_engine_entrypoint(self, value: Optional[pulumi.Input['pulumi_gcp.appengine.StandardAppVersionEntrypointArgs']]):
+    def app_engine_entrypoint(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "app_engine_entrypoint", value)
 
     @property
@@ -161,7 +157,7 @@ class AppEngineWebApp(pulumi.ComponentResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine_entrypoint: Optional[pulumi.Input[pulumi.InputType['pulumi_gcp.appengine.StandardAppVersionEntrypointArgs']]] = None,
+                 app_engine_entrypoint: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_engine_runtime: Optional[pulumi.Input[str]] = None,
                  backend_directory: Optional[pulumi.Input[str]] = None,
                  bucket_admin_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -175,7 +171,6 @@ class AppEngineWebApp(pulumi.ComponentResource):
         Create a AppEngineWebApp resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['pulumi_gcp.appengine.StandardAppVersionEntrypointArgs']] app_engine_entrypoint: The entrypoint for the application.
         :param pulumi.Input[str] app_engine_runtime: Desired runtime (e.g. nodejs14).
         :param pulumi.Input[str] backend_directory: The directory containing backend files.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] bucket_admin_members: Members that you want to give admin privileges to, expected to be in Google's supported formats.
@@ -208,7 +203,7 @@ class AppEngineWebApp(pulumi.ComponentResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine_entrypoint: Optional[pulumi.Input[pulumi.InputType['pulumi_gcp.appengine.StandardAppVersionEntrypointArgs']]] = None,
+                 app_engine_entrypoint: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_engine_runtime: Optional[pulumi.Input[str]] = None,
                  backend_directory: Optional[pulumi.Input[str]] = None,
                  bucket_admin_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

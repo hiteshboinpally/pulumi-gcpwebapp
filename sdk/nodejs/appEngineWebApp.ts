@@ -94,10 +94,7 @@ export class AppEngineWebApp extends pulumi.ComponentResource {
  * The set of arguments for constructing a AppEngineWebApp resource.
  */
 export interface AppEngineWebAppArgs {
-    /**
-     * The entrypoint for the application.
-     */
-    appEngineEntrypoint?: pulumi.Input<gcp.types.input.appengine.StandardAppVersionEntrypointArgs>;
+    appEngineEntrypoint?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Desired runtime (e.g. nodejs14).
      */

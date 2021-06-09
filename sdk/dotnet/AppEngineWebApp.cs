@@ -58,11 +58,13 @@ namespace Pulumi.Gcpwebapp
 
     public sealed class AppEngineWebAppArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The entrypoint for the application.
-        /// </summary>
         [Input("appEngineEntrypoint")]
-        public Input<Pulumi.Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs>? AppEngineEntrypoint { get; set; }
+        private InputMap<string>? _appEngineEntrypoint;
+        public InputMap<string> AppEngineEntrypoint
+        {
+            get => _appEngineEntrypoint ?? (_appEngineEntrypoint = new InputMap<string>());
+            set => _appEngineEntrypoint = value;
+        }
 
         /// <summary>
         /// Desired runtime (e.g. nodejs14).

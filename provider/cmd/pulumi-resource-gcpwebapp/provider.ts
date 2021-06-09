@@ -25,7 +25,7 @@ export class Provider implements provider.Provider {
 
         // TODO: Add support for additional component resources here.
         switch (type) {
-            case "gcpwebapp:index:StaticPage":
+            case "gcpwebapp:index:AppEngineWebApp":
                 return await constructAppEngineWebApp(name, inputs, options);
             default:
                 throw new Error(`unknown resource type ${type}`);

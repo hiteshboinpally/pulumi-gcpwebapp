@@ -60,8 +60,7 @@ func NewAppEngineWebApp(ctx *pulumi.Context,
 }
 
 type appEngineWebAppArgs struct {
-	// The entrypoint for the application.
-	AppEngineEntrypoint *appengine.StandardAppVersionEntrypoint `pulumi:"appEngineEntrypoint"`
+	AppEngineEntrypoint map[string]string `pulumi:"appEngineEntrypoint"`
 	// Desired runtime (e.g. nodejs14).
 	AppEngineRuntime string `pulumi:"appEngineRuntime"`
 	// The directory containing backend files.
@@ -82,8 +81,7 @@ type appEngineWebAppArgs struct {
 
 // The set of arguments for constructing a AppEngineWebApp resource.
 type AppEngineWebAppArgs struct {
-	// The entrypoint for the application.
-	AppEngineEntrypoint appengine.StandardAppVersionEntrypointPtrInput
+	AppEngineEntrypoint pulumi.StringMapInput
 	// Desired runtime (e.g. nodejs14).
 	AppEngineRuntime pulumi.StringInput
 	// The directory containing backend files.

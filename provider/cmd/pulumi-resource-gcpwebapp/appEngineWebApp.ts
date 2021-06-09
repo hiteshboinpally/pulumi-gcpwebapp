@@ -135,7 +135,7 @@ export class AppEngineWebApp extends pulumi.ComponentResource {
             noopOnDestroy: true,
         });
 
-        this.websiteUrl = pulumi.interpolate`http://storage.googleapis.com/${bucket.name}${args.websiteIndexPage}`;
+        this.websiteUrl = pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${args.websiteIndexPage}`;
         this.serverUrl = pulumi.interpolate`https://${appEngineServer.service}-dot-${appEngineServer.project}.${args.regionId}.r.appspot.com`;
 
         this.registerOutputs({
